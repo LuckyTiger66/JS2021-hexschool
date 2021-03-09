@@ -27,7 +27,7 @@ const bmiStatesData = {
 let bmiHistoryData = [];
 
 function addData(bmi, bmiState) {
-  bmiHistoryData.push({bmi,bmiState});
+  bmiHistoryData.push({ bmi, bmiState });
   console.log(bmiHistoryData);
 }
 
@@ -42,30 +42,38 @@ function printBmi(height, weight) {
   } else if (0 <= bmi && bmi < 18.5) {
     bmiState = "overThin";
   } else if (bmi < 24) {
-    bmiState = "normal"; 
+    bmiState = "normal";
   } else if (bmi < 27) {
     bmiState = "overWeight";
   } else if (bmi < 30) {
-    bmiState = "mildFat";     
+    bmiState = "mildFat";
   } else if (bmi < 35) {
     bmiState = "moderateFat";
   } else if (35 <= bmi) {
-    bmiState = "severeFat";  
+    bmiState = "severeFat";
   } else {
     console.log("出現例外情況");
   }
-  addData(bmi,bmiState)
+  // 印出第一階段、第二階段結果用
+  console.log(
+    `您的體重${bmiStatesData[bmiState].state}，健康指數為${bmiStatesData[bmiState].color}`
+  );
+
+  addData(bmi, bmiState);
 }
 
-function showHistoryData(){
+function showHistoryData() {
   console.log(`
-  您總共計算 ${bmiHistoryData.length} 次 BMI 紀錄，最後一次 BMI 指數為 ${bmiHistoryData[bmiHistoryData.length - 1].bmi}，
-  體重${bmiStatesData[bmiHistoryData[bmiHistoryData.length-1].bmiState].state}
-  健康指數為${bmiStatesData[bmiHistoryData[bmiHistoryData.length-1].bmiState].color}`);
+  您總共計算 ${bmiHistoryData.length} 次 BMI 紀錄，最後一次 BMI 指數為 ${
+    bmiHistoryData[bmiHistoryData.length - 1].bmi
+  }，
+  體重${bmiStatesData[bmiHistoryData[bmiHistoryData.length - 1].bmiState].state}
+  健康指數為${
+    bmiStatesData[bmiHistoryData[bmiHistoryData.length - 1].bmiState].color
+  }`);
 }
-
 
 printBmi(178, 20);
 printBmi(178, 70);
 printBmi(178, 85);
-showHistoryData()
+showHistoryData();
