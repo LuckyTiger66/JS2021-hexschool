@@ -36,8 +36,8 @@ function printBmi(height, weight) {
   // console.log(bmi);
   console.log(bmiState);
   if (!isFinite(bmi)) {
-    // 檢查是否為有效的數值或可以轉型為Number的值
-    // 排除字串 NaN Infinity -Infinity
+    // 檢查是否為有效的數值或可以轉型為 Number 的值
+    // 排除不可轉型字串 NaN Infinity -Infinity
     console.log("您的數值輸入錯誤，請重新輸入");
     return;
   } else if (0 <= bmi && bmi < 18.5) {

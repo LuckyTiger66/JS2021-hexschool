@@ -67,11 +67,17 @@ function showHistoryData() {
 // showHistoryData()
 //
 // 第二組資料測試:
-printBmi(178, 20) 
-printBmi(178, 70) 
-printBmi(178, 85)
-printBmi(178, 90)
-printBmi(178, 110)
-printBmi(178, 130)
-printBmi("身高","體重")
+// printBmi(178, 20) 
+// printBmi(178, 70) 
+// printBmi(178, 85)
+// printBmi(178, 90)
+// printBmi(178, 110)
+// printBmi(178, 130)
+// printBmi("身高","體重")
+// showHistoryData()
+//
+// 輸入數據，顯示對應物件內容
+printBmi(178, 20);
+printBmi(178, 70);
+printBmi(178, 85);
 showHistoryData()
