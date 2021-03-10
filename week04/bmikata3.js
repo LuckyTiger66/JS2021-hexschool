@@ -28,12 +28,13 @@ let bmiHistoryData = [];
 
 function addData(bmi, bmiState) {
   bmiHistoryData.push({ bmi, bmiState });
-  console.log(bmiHistoryData);
+  // console.log(bmiHistoryData);
 }
 
 function printBmi(height, weight) {
   let bmi = (weight / (height / 100) ** 2).toFixed(2);
-  console.log(bmi);
+  // console.log(bmi);
+  console.log(bmiState);
   if (!isFinite(bmi)) {
     // 檢查是否為有效的數值或可以轉型為Number的值
     // 排除字串 NaN Infinity -Infinity
