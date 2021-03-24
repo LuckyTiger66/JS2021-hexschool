@@ -87,12 +87,12 @@ displayTicketCardArea(data);
 
 // Event
 selectRegionSearch.addEventListener("change", regionSearchChanged );
-textTicketName.addEventListener("blur", checkInputIsLegal);
-selectTicketRegion.addEventListener("blur", checkInputIsLegal );
-numberTicketPrice.addEventListener("blur", checkInputIsLegal );
-numberTicketNum.addEventListener("blur", checkInputIsLegal );
-numberTicketRate.addEventListener("blur", checkInputIsLegal );
-textTicketDescription.addEventListener("blur", checkInputIsLegal );
+// textTicketName.addEventListener("blur", checkInputIsLegal);
+// selectTicketRegion.addEventListener("blur", checkInputIsLegal );
+// numberTicketPrice.addEventListener("blur", checkInputIsLegal );
+// numberTicketNum.addEventListener("blur", checkInputIsLegal );
+// numberTicketRate.addEventListener("blur", checkInputIsLegal );
+// textTicketDescription.addEventListener("blur", checkInputIsLegal );
 btnAddTicket.addEventListener("click", addTicketData );
 imgUpload.addEventListener("change", addImg);
 
@@ -123,7 +123,7 @@ function displayTicketCardArea(data) {
         dataString += `<li class="ticketCard">
             <div class="ticketCard-img">
                 <a href="#">
-                    <img src="${item.imgUrl}" alt="">
+                    <img id="img" src="${item.imgUrl}" alt="">
                 </a>
                 <div class="ticketCard-region">${item.area}</div>
                 <div class="ticketCard-rank">${item.rate}</div>
@@ -180,7 +180,6 @@ function addTicketData() {
     // 前置判斷
     if (
         !isInputValueLegal(textTicketName) ||
-        !isInputValueLegal(textTicketImgUrl) ||
         !isInputValueLegal(selectTicketRegion) ||
         !isInputValueLegal(numberTicketPrice) ||
         !isInputValueLegal(numberTicketNum) ||
@@ -193,7 +192,6 @@ function addTicketData() {
 
     // Parameters
     const name = textTicketName.value;
-    const imgUrl = textTicketImgUrl.value;
     const area =
         selectTicketRegion.options[selectTicketRegion.selectedIndex].value;
     const price = Number(numberTicketPrice.value);
@@ -206,7 +204,7 @@ function addTicketData() {
     objTicket.id =
         data.length <= 0 ? 1 : Math.max(...data.map((item) => item.id)) + 1;
     objTicket.name = name;
-    objTicket.imgUrl = imgUrl;
+    objTicket.imgUrl = imgSrc;
     objTicket.area = area;
     objTicket.description = description;
     objTicket.group = group;
