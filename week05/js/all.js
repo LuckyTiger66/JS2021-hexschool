@@ -79,22 +79,34 @@ const numberTicketNum = document.querySelector("#ticketNum");
 const numberTicketRate = document.querySelector("#ticketRate");
 const textTicketDescription = document.querySelector("#ticketDescription");
 const btnAddTicket = document.querySelector("#btnAddTicket");
+const imgUpload = document.querySelector('#imgUpload');
+const imgPreview = document.querySelector("#imgPreview");
 
 // Initialize
 displayTicketCardArea(data);
 
 // Event
-selectRegionSearch.addEventListener("change", regionSearchChanged, false);
-textTicketName.addEventListener("blur", checkInputIsLegal, false);
-textTicketImgUrl.addEventListener("blur", checkInputIsLegal, false);
-selectTicketRegion.addEventListener("blur", checkInputIsLegal, false);
-numberTicketPrice.addEventListener("blur", checkInputIsLegal, false);
-numberTicketNum.addEventListener("blur", checkInputIsLegal, false);
-numberTicketRate.addEventListener("blur", checkInputIsLegal, false);
-textTicketDescription.addEventListener("blur", checkInputIsLegal, false);
-btnAddTicket.addEventListener("click", addTicketData, false);
+selectRegionSearch.addEventListener("change", regionSearchChanged );
+textTicketName.addEventListener("blur", checkInputIsLegal);
+selectTicketRegion.addEventListener("blur", checkInputIsLegal );
+numberTicketPrice.addEventListener("blur", checkInputIsLegal );
+numberTicketNum.addEventListener("blur", checkInputIsLegal );
+numberTicketRate.addEventListener("blur", checkInputIsLegal );
+textTicketDescription.addEventListener("blur", checkInputIsLegal );
+btnAddTicket.addEventListener("click", addTicketData );
+imgUpload.addEventListener("change", addImg);
 
 // Function
+
+// 圖片縮圖預覽
+let imgSrc = "";
+
+function addImg(e) {
+    textPreview.innerHTML = `<label>預覽圖片</label>`;
+    const fileData = e.target.files[0];
+    imgPreview.src = URL.createObjectURL(fileData);
+    imgSrc = imgPreview.src;
+}
 // 根據傳入的data顯示TicketCard
 function displayTicketCardArea(data) {
     // Element

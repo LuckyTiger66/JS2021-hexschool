@@ -33,8 +33,8 @@
             </div>
             <div class="form-group">
                 <div class="addTicket-input">
-                    <label for="ticketImgUrl">圖片網址</label>
-                    <input type="text" id="ticketImgUrl" placeholder="請填寫圖片網址" name="圖片網址">
+                    <label for="ticketImgUrl">圖片檔案</label>
+                    <input type="file" id="imgUpload" placeholder="請填寫圖片網址或上傳圖檔" name="圖片網址">
                 </div>
                 <div class="alert-message">
                     <p id="ticketImgUrl-message" data-message="圖片網址" class="d-none">
@@ -42,6 +42,8 @@
                                 <span>必填!</span>
                     </p>
                 </div>
+                <div id="textPreview"></div>
+                <img id="imgPreview" src="">
             </div>
             <div class="form-group">
                 <div class="addTicket-input">
