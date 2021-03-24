@@ -72,27 +72,23 @@ let data = [
 // Element
 const selectRegionSearch = document.querySelector(".regionSearch");
 const textTicketName = document.querySelector("#ticketName");
-const textTicketImgUrl = document.querySelector("#ticketImgUrl");
+const textTicketImgUrl = document.querySelector("#imgUpload");
 const selectTicketRegion = document.querySelector("#ticketRegion");
 const numberTicketPrice = document.querySelector("#ticketPrice");
 const numberTicketNum = document.querySelector("#ticketNum");
 const numberTicketRate = document.querySelector("#ticketRate");
 const textTicketDescription = document.querySelector("#ticketDescription");
 const btnAddTicket = document.querySelector("#btnAddTicket");
+const textPreview = document.querySelector("#textPreview");
 const imgUpload = document.querySelector('#imgUpload');
 const imgPreview = document.querySelector("#imgPreview");
+const formRemove = document.querySelector(".addTicket-form");
 
 // Initialize
 displayTicketCardArea(data);
 
 // Event
 selectRegionSearch.addEventListener("change", regionSearchChanged );
-// textTicketName.addEventListener("blur", checkInputIsLegal);
-// selectTicketRegion.addEventListener("blur", checkInputIsLegal );
-// numberTicketPrice.addEventListener("blur", checkInputIsLegal );
-// numberTicketNum.addEventListener("blur", checkInputIsLegal );
-// numberTicketRate.addEventListener("blur", checkInputIsLegal );
-// textTicketDescription.addEventListener("blur", checkInputIsLegal );
 btnAddTicket.addEventListener("click", addTicketData );
 imgUpload.addEventListener("change", addImg);
 
@@ -100,7 +96,6 @@ imgUpload.addEventListener("change", addImg);
 
 // 圖片縮圖預覽
 let imgSrc = "";
-
 function addImg(e) {
     textPreview.innerHTML = `<label>預覽圖片</label>`;
     const fileData = e.target.files[0];
@@ -224,13 +219,9 @@ function addTicketData() {
 
 // 清除資料
 function clearData() {
-    textTicketName.value = "";
-    textTicketImgUrl.value = "";
-    selectTicketRegion.selectedIndex = 0;
-    numberTicketPrice.value = "";
-    numberTicketNum.value = "";
-    numberTicketRate.value = "";
-    textTicketDescription.value = "";
+    textPreview.innerHTML = "";
+    imgPreview.src = "";
+    formRemove.reset();
 }
 
 // Input元件離開時觸發
