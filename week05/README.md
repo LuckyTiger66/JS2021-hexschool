@@ -4,5 +4,6 @@
 [旅遊行程網 DEMO](https://luckytiger66.github.io/JS2021-hexschool/week05/)
 
 ## 畫面截圖
-![](https://i.imgur.com/GQaye3i.png)
-![](https://i.imgur.com/wkFvOV8.png)
+
+<img src="https://i.imgur.com/GQaye3i.png" width="600">
+<img src="https://i.imgur.com/wkFvOV8.png" width="600">
