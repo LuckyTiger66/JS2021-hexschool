@@ -53,21 +53,28 @@ function updateChart() {
     const chart = c3.generate({
         bindto: '#js-ticketChart',
         data: {
-        columns: [
-            ['台北', chartData.taipei],
-            ['台中', chartData.taichung],
-            ['高雄', chartData.kaohsiung],
-        ],
-        type: 'donut',
+            columns: [
+                ['台北', chartData.taipei],
+                ['台中', chartData.taichung],
+                ['高雄', chartData.kaohsiung],
+            ],
+            type: 'donut',
+            colors: {
+                '台北': '#26BFC7',
+                '台中': '#5151D3',
+                '高雄': '#E68618'
+            }
         },
-        colors: {
-            '高雄': '#E68618',
-            '台中': '#5151D3',
-            '台北': '#26BFC7'
-        }
+        size:{
+            width: 200,
+            height: 200
+        },
         donut: {
             title: '套票地區比重',
             width: 20,
+            label: {
+                show: false
+            },
         },
     });
 }

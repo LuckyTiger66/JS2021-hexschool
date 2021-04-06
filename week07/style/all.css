@@ -406,11 +406,6 @@ body {
     margin-right: 2.5%;
 }
 
-.ticketChart {
-    width: 200px;
-    height: 200px;
-}
-
 .c3-chart-arc text {
     display: none;
 }
