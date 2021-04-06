@@ -89,6 +89,12 @@ displayTicketCardArea(data);
 
 // Event
 selectRegionSearch.addEventListener("change", regionSearchChanged );
+textTicketName.addEventListener("blur", checkInputIsLegal, false);
+selectTicketRegion.addEventListener("blur", checkInputIsLegal, false);
+numberTicketPrice.addEventListener("blur", checkInputIsLegal, false);
+numberTicketNum.addEventListener("blur", checkInputIsLegal, false);
+numberTicketRate.addEventListener("blur", checkInputIsLegal, false);
+textTicketDescription.addEventListener("blur", checkInputIsLegal, false);
 btnAddTicket.addEventListener("click", addTicketData );
 imgUpload.addEventListener("change", addImg);
 
