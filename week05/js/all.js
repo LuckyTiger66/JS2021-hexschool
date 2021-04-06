@@ -93,7 +93,6 @@ btnAddTicket.addEventListener("click", addTicketData );
 imgUpload.addEventListener("change", addImg);
 
 // Function
-
 // 圖片縮圖預覽
 let imgSrc = "";
 function addImg(e) {
@@ -187,8 +186,7 @@ function addTicketData() {
 
     // Parameters
     const name = textTicketName.value;
-    const area =
-        selectTicketRegion.options[selectTicketRegion.selectedIndex].value;
+    const area = selectTicketRegion.value;
     const price = Number(numberTicketPrice.value);
     const group = Number(numberTicketNum.value);
     const rate = Number(numberTicketRate.value);
