@@ -1,6 +1,6 @@
-# 六角學院 2021 JS 直播班 - Axios Ajax 練習
+# 六角學院 2021 JS 直播班 - C3.js 練習
 
-## 旅遊行程網  Axios Ajax DEMO
+## 旅遊行程網  C3.js DEMO
 [旅遊行程網 DEMO](https://luckytiger66.github.io/JS2021-hexschool/week07/)
 
 ## 畫面截圖
