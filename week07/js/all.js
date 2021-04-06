@@ -60,6 +60,11 @@ function updateChart() {
         ],
         type: 'donut',
         },
+        colors: {
+            '高雄': '#E68618',
+            '台中': '#5151D3',
+            '台北': '#26BFC7'
+        }
         donut: {
             title: '套票地區比重',
             width: 20,
