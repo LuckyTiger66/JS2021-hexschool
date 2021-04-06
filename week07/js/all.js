@@ -44,20 +44,27 @@ function initData() {
         });
 }
 // C3.js chart
-function updateChart() {
-    chartData = {
-        taipei: data.filter(item => item.area === '台北').length,
-        taichung: data.filter(item => item.area === '台中').length,
-        kaohsiung: data.filter(item => item.area === '高雄').length,
-    };
+function updateChart(c3Data) {
+    let totalObj  = {};
+    c3Data.forEach(item => {
+        if(totalObj[item.area] == undefined){
+        totalObj[item.area] = 1;
+        }else{
+        totalObj[item.area] += 1;
+        }
+    })
+    let areaAry = Object.keys(totalObj);
+    let newData = [];
+    areaAry.forEach(item => {
+        let ary = [];
+        ary.push(item);
+        ary.push(totalObj[item]);
+        newData.push(ary);
+    })
     const chart = c3.generate({
         bindto: '#js-ticketChart',
         data: {
-            columns: [
-                ['台北', chartData.taipei],
-                ['台中', chartData.taichung],
-                ['高雄', chartData.kaohsiung],
-            ],
+            columns: newData,
             type: 'donut',
             colors: {
                 '台北': '#26BFC7',
@@ -138,7 +145,7 @@ function displayTicketCardArea(data) {
     }
 
     // 顯示圓餅圖
-    updateChart();
+    updateChart(data);
 }
 
 // 下拉選單篩選顯示區域
@@ -146,8 +153,9 @@ function regionSearchChanged() {
     // console.log(
     //     selectRegionSearch.options[selectRegionSearch.selectedIndex].value
     // );
+    // console.log(selectRegionSearch.value);
     const selectedValue =
-        selectRegionSearch.options[selectRegionSearch.selectedIndex].value;
+        selectRegionSearch.value;
     if (selectedValue === "") {
         displayTicketCardArea(data);
     } else {
