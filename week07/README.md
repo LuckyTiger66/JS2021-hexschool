@@ -6,5 +6,5 @@
 ## 畫面截圖
 
 <img src="https://i.imgur.com/RxMKCUv.png" width="600">
-<img src="https://i.imgur.com/1Bd4k7e.png" width="600">
+<img src="https://i.imgur.com/9PwbgEz.png" width="600">
 <img src="https://i.imgur.com/3WTom7M.png" width="600">
