@@ -7,25 +7,28 @@ initData();
 // Element
 const selectRegionSearch = document.querySelector(".regionSearch");
 const textTicketName = document.querySelector("#ticketName");
-const textTicketImgUrl = document.querySelector("#ticketImgUrl");
+const textTicketImgUrl = document.querySelector("#imgUpload");
 const selectTicketRegion = document.querySelector("#ticketRegion");
 const numberTicketPrice = document.querySelector("#ticketPrice");
 const numberTicketNum = document.querySelector("#ticketNum");
 const numberTicketRate = document.querySelector("#ticketRate");
 const textTicketDescription = document.querySelector("#ticketDescription");
 const btnAddTicket = document.querySelector("#btnAddTicket");
+const textPreview = document.querySelector("#textPreview");
+const imgUpload = document.querySelector('#imgUpload');
+const imgPreview = document.querySelector("#imgPreview");
+const formRemove = document.querySelector(".addTicket-form");
 
 // Event
 selectRegionSearch.addEventListener("change", regionSearchChanged, false);
 textTicketName.addEventListener("blur", checkInputIsLegal, false);
-textTicketImgUrl.addEventListener("blur", checkInputIsLegal, false);
 selectTicketRegion.addEventListener("blur", checkInputIsLegal, false);
 numberTicketPrice.addEventListener("blur", checkInputIsLegal, false);
 numberTicketNum.addEventListener("blur", checkInputIsLegal, false);
 numberTicketRate.addEventListener("blur", checkInputIsLegal, false);
 textTicketDescription.addEventListener("blur", checkInputIsLegal, false);
 btnAddTicket.addEventListener("click", addTicketData, false);
-
+imgUpload.addEventListener("change", addImg);
 // Function
 // Axios Ajax取得資料
 function initData() {
@@ -39,7 +42,14 @@ function initData() {
             displayTicketCardArea(data);
         });
 }
-
+// 圖片縮圖預覽
+let imgSrc = "";
+function addImg(e) {
+    textPreview.innerHTML = `<label>預覽圖片</label>`;
+    const fileData = e.target.files[0];
+    imgPreview.src = URL.createObjectURL(fileData);
+    imgSrc = imgPreview.src;
+}
 // 根據傳入的data顯示TicketCard
 function displayTicketCardArea(data) {
     // Element
@@ -56,7 +66,7 @@ function displayTicketCardArea(data) {
         dataString += `<li class="ticketCard">
             <div class="ticketCard-img">
                 <a href="#">
-                    <img src="${item.imgUrl}" alt="">
+                <img id="img" src="${item.imgUrl}" alt="">
                 </a>
                 <div class="ticketCard-region">${item.area}</div>
                 <div class="ticketCard-rank">${item.rate}</div>
@@ -113,7 +123,6 @@ function addTicketData() {
     // 前置判斷
     if (
         !isInputValueLegal(textTicketName) ||
-        !isInputValueLegal(textTicketImgUrl) ||
         !isInputValueLegal(selectTicketRegion) ||
         !isInputValueLegal(numberTicketPrice) ||
         !isInputValueLegal(numberTicketNum) ||
@@ -126,9 +135,7 @@ function addTicketData() {
 
     // Parameters
     const name = textTicketName.value;
-    const imgUrl = textTicketImgUrl.value;
-    const area =
-        selectTicketRegion.options[selectTicketRegion.selectedIndex].value;
+    const area = selectTicketRegion.value;
     const price = Number(numberTicketPrice.value);
     const group = Number(numberTicketNum.value);
     const rate = Number(numberTicketRate.value);
@@ -139,7 +146,7 @@ function addTicketData() {
     objTicket.id =
         data.length <= 0 ? 1 : Math.max(...data.map((item) => item.id)) + 1;
     objTicket.name = name;
-    objTicket.imgUrl = imgUrl;
+    objTicket.imgUrl = imgSrc;
     objTicket.area = area;
     objTicket.description = description;
     objTicket.group = group;
@@ -159,13 +166,9 @@ function addTicketData() {
 
 // 清除資料
 function clearData() {
-    textTicketName.value = "";
-    textTicketImgUrl.value = "";
-    selectTicketRegion.selectedIndex = 0;
-    numberTicketPrice.value = "";
-    numberTicketNum.value = "";
-    numberTicketRate.value = "";
-    textTicketDescription.value = "";
+    textPreview.innerHTML = "";
+    imgPreview.src = "";
+    formRemove.reset();
 }
 
 // Input元件離開時觸發
