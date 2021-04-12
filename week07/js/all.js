@@ -67,9 +67,9 @@ function updateChart(c3Data) {
             columns: newData,
             type: 'donut',
             colors: {
-                '台北': '#26BFC7',
-                '台中': '#5151D3',
-                '高雄': '#E68618'
+                台北: '#26BFC7',
+                台中: '#5151D3',
+                高雄: '#E68618'
             }
         },
         size:{
