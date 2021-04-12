@@ -40,7 +40,7 @@ function initData() {
             // console.log(response.data.data);
             data = response.data.data;
             displayTicketCardArea(data);
-            updateChart();
+            updateChart(data);
         });
 }
 // C3.js chart
