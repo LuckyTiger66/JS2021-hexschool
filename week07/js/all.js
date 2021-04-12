@@ -290,6 +290,8 @@ function modifyErrorMessage(e, msg) {
 
 // 判斷是否有輸入
 function isValueInput(value) {
+    // 防止使用者只按 spacebar 空白鍵
+    value = value.trim();
     return value !== "";
 }
 
