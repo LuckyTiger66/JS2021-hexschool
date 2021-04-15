@@ -9,3 +9,6 @@
 
 ## 每周任務
 * 放在各週檔案資料夾
+
+## 直播班完課分享
+* https://github.com/LuckyTiger66/HackMD/blob/main/javascriptLiveClass_hexschooe_review.md
