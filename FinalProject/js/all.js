@@ -3,13 +3,14 @@ const productSelect = document.querySelector('.productSelect');
 const cartList = document.querySelector('.shoppingCart-tableList');
 let productData=[];
 let cartData=[];
+
 function init(){
   getProductList();
   getCartList();
 }
 init();
+
 function getProductList(){
-  // 背不起來
   axios.get(`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/products`)
   .then(function(response){
     productData = response.data.products;
@@ -42,7 +43,6 @@ productSelect.addEventListener('change',function(e){
     renderProductList();
     return;
   }
-  // 函式消除重複
   let str = "";
   productData.forEach(function(item){
     if(item.category ==category){
@@ -106,17 +106,17 @@ function getCartList(){
       cartList.innerHTML = str;
     })
 }
-
+// 刪除單一品項購物車流程
 cartList.addEventListener('click',function(e){
   e.preventDefault();
   const cartId = e.target.getAttribute("data-id");
   if(cartId==null){
-    alert("你點到其它東西了窩~")
+    // alert("你點到其它東西了窩~")
     return;
   }
-  console.log(cartId);
+  // console.log(cartId);
   axios.delete(`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/carts/${cartId}`)
-  .then(function(reponse){
+  .then(function(response){
     alert("刪除單筆購物車成功");
     getCartList();
   })
@@ -135,33 +135,84 @@ discardAllBtn.addEventListener("click",function(e){
   })
 })
 
-// 送出訂單
+// 送出預訂資料
+const inputs = document.querySelectorAll("input,select");
+const form = document.querySelector(".orderInfo-form");
 const orderInfoBtn = document.querySelector(".orderInfo-btn");
+const constraints = {
+  姓名: {
+    presence: {
+      message: "必填欄位"
+    } 
+  },
+  電話: {
+    presence: {
+      message: "必填欄位"
+    },
+    length: {
+      minimum: 8,
+      message: "需超過 8 碼"
+    },
+    format: {
+      pattern: "[0-9]+", // 只能填入數字
+      flags: "i", // 大小寫不拘
+      message: "請輸入號碼"
+    }
+  },
+  Email: {
+    presence: {
+      message: "必填欄位"
+    },
+    email: {
+      message: "格式錯誤"
+    }
+  },
+  寄送地址: {
+    presence: {
+      message: "必填欄位"
+    }
+  },
+  交易方式: {
+    presence: {
+      message: "必選欄位"
+    }
+  }
+};
 orderInfoBtn.addEventListener('click', function (e) {
 	e.preventDefault();
 	if (cartData.length == 0) {
-		alert('請加入購物車');
+		alert('請選購商品加入購物車');
 		return;
 	}
-	const customerName = document.querySelector('#customerName').value;
+  handleFormSubmit(form);
+});
+function handleFormSubmit() {
+  let errors = validate(form, constraints);
+  inputs.forEach((item) => {
+    item.addEventListener("change", function () {
+      item.nextElementSibling.textContent = "";
+    });
+  });
+  showErrors(form, errors || {});
+  if (!errors) {
+    showSuccess();
+  }
+  
+}
+function showErrors(form, errors) {
+  // console.log(errors);
+  Object.keys(errors).forEach(function (keys) {
+    console.log(document.querySelector(`[data-message=${keys}]`));
+    console.log(errors[keys]);
+    document.querySelector(`[data-message="${keys}"]`).textContent = errors[keys];
+  });
+}
+function showSuccess() {
+  const customerName = document.querySelector('#customerName').value;
 	const customerPhone = document.querySelector('#customerPhone').value;
 	const customerEmail = document.querySelector('#customerEmail').value;
 	const customerAddress = document.querySelector('#customerAddress').value;
 	const customerTradeWay = document.querySelector('#tradeWay').value;
-	if (
-		customerName == '' ||
-		customerPhone == '' ||
-		customerEmail == '' ||
-		customerAddress == '' ||
-		customerTradeWay == ''
-	) {
-		alert('請勿輸入空資訊');
-		return;
-	}
-	if (validateEmail(customerEmail) == false) {
-		alert('請填寫正確的Email');
-		return;
-	}
 	axios
 		.post(
 			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/orders`,
@@ -179,41 +230,14 @@ orderInfoBtn.addEventListener('click', function (e) {
 		)
 		.then(function (response) {
 			alert('訂單建立成功');
-			document.querySelector('#customerName').value = '';
-			document.querySelector('#customerPhone').value = '';
-			document.querySelector('#customerEmail').value = '';
-			document.querySelector('#customerAddress').value = '';
-			document.querySelector('#tradeWay').value = 'ATM';
+      form.reset();
 			getCartList();
 		});
-});
-
-
-const customerEmail = document.querySelector("#customerEmail");
-customerEmail.addEventListener("blur",function(e){
-  if (validateEmail(customerEmail.value) == false) {
-    document.querySelector(`[data-message=Email]`).textContent = "請填寫正確 Email 格式";
-    return;
-  }
-})
-
-
-// util js、元件
+}
+// 數字千分位標註
 function toThousands(x) {
   let parts = x.toString().split(".");
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return parts.join(".");
 }
 
-function validateEmail(mail) {
-  if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(mail)) {
-    return true
-  }
-  return false;
-}
-function validatePhone(phone) {
-  if (/^[09]{2}\d{8}$/.test(phone)) {
-    return true
-  }
-  return false;
-}
