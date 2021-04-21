@@ -13,7 +13,7 @@ init();
 function getProductList() {
 	axios
 		.get(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/products`
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/products`
 		)
 		.then(function (response) {
 			productData = response.data.products;
@@ -73,7 +73,7 @@ productList.addEventListener('click', function (e) {
 
 	axios
 		.post(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/carts`,
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`,
 			{
 				'data': {
 					'productId': productId,
@@ -90,7 +90,7 @@ productList.addEventListener('click', function (e) {
 function getCartList() {
 	axios
 		.get(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/carts`
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`
 		)
 		.then(function (response) {
 			document.querySelector('.js-total').textContent = toThousands(
@@ -134,7 +134,7 @@ cartList.addEventListener('click', function (e) {
 	// console.log(cartId);
 	axios
 		.delete(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/carts/${cartId}`
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/carts/${cartId}`
 		)
 		.then(function (response) {
 			alert('刪除單筆購物車成功');
@@ -150,7 +150,7 @@ discardAllBtn.addEventListener('click', function (e) {
 	}
 	axios
 		.delete(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/carts`
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`
 		)
 		.then(function (response) {
 			alert('刪除全部購物車成功！');
@@ -241,7 +241,7 @@ function showSuccess() {
 	const customerTradeWay = document.querySelector('#tradeWay').value;
 	axios
 		.post(
-			`https://hexschoollivejs.herokuapp.com/api/livejs/v1/customer/${api_path}/orders`,
+			`${baseUrl}/api/livejs/v1/customer/${api_path}/orders`,
 			{
 				'data': {
 					'user': {
