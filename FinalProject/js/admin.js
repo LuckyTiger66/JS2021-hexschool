@@ -5,7 +5,7 @@ function init() {
 }
 init();
 function renderC3() {
-	console.log(orderData);
+	// console.log(orderData);
 	// 物件資料蒐集
 	let total = {};
 	orderData.forEach(function (item) {
@@ -17,10 +17,10 @@ function renderC3() {
 			}
 		});
 	});
-	console.log(total);
+	// console.log(total);
 	// 做出資料關聯
 	let categoryAry = Object.keys(total);
-	console.log(categoryAry);
+	// console.log(categoryAry);
 	let newData = [];
 	categoryAry.forEach(function (item) {
 		let ary = [];
@@ -28,7 +28,7 @@ function renderC3() {
 		ary.push(total[item]);
 		newData.push(ary);
 	});
-	console.log(newData);
+	// console.log(newData);
 	// C3.js
 	let chart = c3.generate({
 		bindto: '#chart', // HTML 元素綁定
@@ -50,11 +50,11 @@ function renderC3_lv2() {
 			}
 		});
 	});
-	console.log(obj);
+	// console.log(obj);
 
 	// 拉出資料關聯
 	let originAry = Object.keys(obj);
-	console.log(originAry);
+	// console.log(originAry);
 	// 透過 originAry，整理成 C3 格式
 	let rankSortAry = [];
 
@@ -64,7 +64,7 @@ function renderC3_lv2() {
 		ary.push(obj[item]);
 		rankSortAry.push(ary);
 	});
-	console.log(rankSortAry);
+	// console.log(rankSortAry);
 	// 比大小，降冪排列（目的：取營收前三高的品項當主要色塊，把其餘的品項加總起來當成一個色塊）
 	// sort: https://developer.mozilla.org/zh-TW/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 	rankSortAry.sort(function (a, b) {
@@ -152,27 +152,28 @@ function getOrderList() {
 
 orderList.addEventListener('click', function (e) {
 	e.preventDefault();
-	if (window.confirm('你是否確定要刪除?') === false) {
-		return;
-	}
+	// console.log(e.target);
 	const targetClass = e.target.getAttribute('class');
+	// console.log(targetClass);
 	let id = e.target.getAttribute('data-id');
 	if (targetClass == 'delSingleOrder-Btn js-orderDelete') {
+		if (window.confirm('你是否確定要刪除?') === false) {
+			return;
+		}
 		deletOrderItem(id);
 		return;
 	}
 	if (targetClass == 'orderStatus') {
 		let status = e.target.getAttribute('data-status');
-
 		changeOrderStatus(status, id);
 		return;
 	}
 });
 
 function changeOrderStatus(status, id) {
-	console.log(status, id);
+	// console.log(status, id);
 	let newStatus;
-	if (status == true) {
+	if (status == 'true') {
 		newStatus = false;
 	} else {
 		newStatus = true;
