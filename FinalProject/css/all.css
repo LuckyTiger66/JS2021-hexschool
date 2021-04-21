@@ -1,6 +1,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+  v2.0 | 20110126
+  License: none (public domain)
 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -79,7 +79,7 @@ body {
 }
 
 .topBar {
-  border-bottom: 40px solid #000000;
+  border-bottom: 40px solid #ADF;
   margin-bottom: 30px;
 }
 
@@ -250,7 +250,7 @@ body {
 }
 
 .furniture-compare {
-  background-color: #F8F8F8;
+  background-color: #ADF;
   padding: 50px 0 60px 0;
 }
 
@@ -315,7 +315,7 @@ body {
 }
 
 .recommendation {
-  background-color: #301E5F;
+  background-color: #FFF;
   padding: 60px 0;
 }
 
@@ -730,7 +730,7 @@ body {
   display: block;
   min-width: 255px;
   min-height: 48px;
-  background-color: #000000;
+  background-color: #ADF;
   color: #FFFFFF;
   border: 0;
   cursor: pointer;
