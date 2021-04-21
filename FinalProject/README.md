@@ -1,4 +1,4 @@
-index：https://luckytiger66.github.io/JS2021-hexschool/FinalProject
+前台：https://luckytiger66.github.io/JS2021-hexschool/FinalProject
 
-admin：https://luckytiger66.github.io/JS2021-hexschool/FinalProject/admin
+後台：https://luckytiger66.github.io/JS2021-hexschool/FinalProject/admin
 
