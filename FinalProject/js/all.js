@@ -123,9 +123,7 @@ function getCartList() {
 // 刪除單一品項購物車流程
 cartList.addEventListener('click', function (e) {
 	e.preventDefault();
-	if (window.confirm('你是否確定要刪除?') === false) {
-		return;
-	}
+	if (!confirm('你是否確定要刪除?')) return;
 	const cartId = e.target.getAttribute('data-id');
 	if (cartId == null) {
 		// alert("你點到其它東西了窩~")
@@ -145,9 +143,7 @@ cartList.addEventListener('click', function (e) {
 const discardAllBtn = document.querySelector('.discardAllBtn');
 discardAllBtn.addEventListener('click', function (e) {
 	e.preventDefault();
-	if (window.confirm('你是否確定要刪除?') === false) {
-		return;
-	}
+	if (!confirm('你是否確定要刪除?')) return;
 	axios
 		.delete(
 			`${baseUrl}/api/livejs/v1/customer/${api_path}/carts`
