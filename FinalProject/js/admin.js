@@ -157,9 +157,7 @@ orderList.addEventListener('click', function (e) {
 	// console.log(targetClass);
 	let id = e.target.getAttribute('data-id');
 	if (targetClass == 'delSingleOrder-Btn js-orderDelete') {
-		if (window.confirm('你是否確定要刪除?') === false) {
-			return;
-		}
+		if (!confirm('你是否確定要刪除?')) return;
 		deletOrderItem(id);
 		return;
 	}
@@ -219,9 +217,7 @@ function deletOrderItem(id) {
 const discardAllBtn = document.querySelector('.discardAllBtn');
 discardAllBtn.addEventListener('click', function (e) {
 	e.preventDefault();
-	if (window.confirm('你是否確定要刪除?') === false) {
-		return;
-	}
+	if (!confirm('你是否確定要刪除?')) return;
 	axios
 		.delete(`${baseUrl}/api/livejs/v1/admin/${api_path}/orders`, {
 			headers: {
