@@ -112,7 +112,7 @@ body {
 }
 
 .topBar a:hover {
-  color: #6A33F8;
+  color: #6A33FF;
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
 }
@@ -166,7 +166,7 @@ body {
     font-size: 1rem;
   }
   .topBar-menu a:hover {
-    background-color: #6A33F8;
+    background-color: #6A33FF;
     color: #FFFFFF;
   }
   .topBar-menu li:last-child a {
@@ -401,11 +401,12 @@ body {
 
 .recommend-text {
   font-size: 0.875rem;
-  color: #6A33F8;
+  color: #6A33FF;
 }
 
 .transport {
   padding: 30px 0;
+  background-color: #F8F8F8;
 }
 
 @media (max-width: 767px) {
@@ -560,7 +561,7 @@ body {
 }
 
 .productCard a:hover {
-  background-color: #301E5F;
+  background-color: #6A33FF;
 }
 
 .productCard a, .productCard h3 {
@@ -657,7 +658,7 @@ body {
 }
 
 .discardBtn a:hover {
-  color: #6A33F8;
+  color: #6A33FF;
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
 }
@@ -740,7 +741,7 @@ body {
 }
 
 .orderInfo-btn:hover {
-  background-color: #301E5F;
+  background-color: #6A33FF;
 }
 
 .orderPage-list {

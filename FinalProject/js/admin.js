@@ -137,7 +137,7 @@ function getOrderList(){
           </td>
           <td>${orderTime}</td>
           <td class=" js-orderStatus">
-            <a href="#" data-status="${item.paid}" class="orderStatus" data-id="${item.id}">${orderStatus}</a>
+            <a href="#" data-status="${item.paid}" class="orderStatus" data-id="${item.id}" style="text-decoration:none;">${orderStatus}</a>
           </td>
           <td>
             <input type="button" class="delSingleOrder-Btn js-orderDelete" data-id="${item.id}" value="刪除">
