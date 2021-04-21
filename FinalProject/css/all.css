@@ -204,7 +204,11 @@ body {
 
 .banner {
   position: relative;
+<<<<<<< HEAD
   background-image: url(../images/wowo-banner.jpg);
+=======
+  background-image: url(/images/wowo-banner.jpg);
+>>>>>>> b441ca6... fix: bannet
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
